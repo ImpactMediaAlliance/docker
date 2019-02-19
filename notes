@@ -1,0 +1,37 @@
+docker pull
+docker start [name]
+docker stop [name]
+docker ps, docker ps -a
+docker rm [id], docker rm -f [name]
+docker rmi [image name]
+
+SQL Server for Linux
+https://hub.docker.com/r/microsoft/mssql-server-linux/
+https://docs.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker?view=sql-server-2017&pivots=cs1-bash
+
+Express Edition
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=MyPass@word" -e "MSSQL_PID=Express" \
+-p 1439:1433 -d --name=sql -v //c/mount/sql:/var/opt/mssql/data microsoft/mssql-server-linux:latest
+
+connection string: 
+Server=localhost,1433;Initial Catalog=MyDb;Integrated Security=True;User Id=sa;Password=MyPass@word;
+
+Connect to SQL Server
+bash
+sudo docker exec -it [name] "bash"
+
+sqlcmd
+(leave off -P to be prompted for password)
+sqlcmd -S localhost -U SA -P '<YourPassword>'
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P '<YourPassword>' 
+
+Name of all databases
+SELECT Name from sys.Databases
+
+or?
+sqlcmd -U sa –S <YourIP>,<Port>
+
+Volumes
+docker volume ls
+docker volume create [name]
+docker volume rm [name]
