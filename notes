@@ -8,12 +8,10 @@ docker images - view images
 
 docker pull - pull an image and store locally
 
-docker run -it [name ie: ubuntu]
+docker run -it --name [name]
 --name gives container a name
 -it is -i and -t tag ?
 --rm removes itself after container is stopped
-
-
 
 docker start [container id or container name]
 docker stop [container id or name]
@@ -23,6 +21,7 @@ docker rmi [image name]
 
 Running Containers
 exit - to exit a container
+Ctrl-P Ctrl-Q - Detaching from the container without stopping
 
 SQL Server for Linux
 https://hub.docker.com/r/microsoft/mssql-server-linux/
