@@ -1,9 +1,28 @@
-docker pull
-docker start [name]
-docker stop [name]
-docker ps, docker ps -a
+docker info
+
+docker ps - view active containers
+docker ps -a - view all containers
+docker ps -l - view last container created (note: small L not a 1)
+
+docker images - view images
+
+docker pull - pull an image and store locally
+
+docker run -it [name ie: ubuntu]
+--name gives container a name
+-it is -i and -t tag ?
+--rm removes itself after container is stopped
+
+
+
+docker start [container id or container name]
+docker stop [container id or name]
+
 docker rm [id], docker rm -f [name]
 docker rmi [image name]
+
+Running Containers
+exit - to exit a container
 
 SQL Server for Linux
 https://hub.docker.com/r/microsoft/mssql-server-linux/
