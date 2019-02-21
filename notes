@@ -1,27 +1,34 @@
-docker info
-
-docker ps - view active containers
-docker ps -a - view all containers
-docker ps -l - view last container created (note: small L not a 1)
-
-docker images - view images
-
-docker pull - pull an image and store locally
-
+docker-compose.yml in the root of your project directory
+Dockerfile can go in subdirectories
+docker compose up
+docker compose down
+docker pull - pulls images remotely if nothing stored locally
+docker build
 docker run -it --name [name]
---name gives container a name
 -it is -i and -t tag ?
 --rm removes itself after container is stopped
-
-docker start [container id or container name]
+docker start [container id or name]
 docker stop [container id or name]
 
-docker rm [id], docker rm -f [name]
-docker rmi [image name]
+docker info
+
+Containers
+docker ps - view active containers (or docker container ls)
+docker ps -a - view all containers (or docker container ls -a)
+docker ps -l - view last container created (note: small L not a 1) (or docker container -l)
 
 Running Containers
 exit - to exit a container
 Ctrl-P Ctrl-Q - Detaching from the container without stopping
+
+Images
+docker images - view images
+docker purge?
+Run the container bash, using the following command.
+docker exec -it <container_name> bash
+
+docker rm [id], docker rm -f [name]
+docker rmi [image name]
 
 SQL Server for Linux
 https://hub.docker.com/r/microsoft/mssql-server-linux/
