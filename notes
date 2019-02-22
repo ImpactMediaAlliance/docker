@@ -1,37 +1,50 @@
+Docker
+docker info
+docker version
+
+Compose
 docker-compose.yml in the root of your project directory
-Dockerfile can go in subdirectories
 docker compose up
 docker compose down
+docker compose build
+
+Dockerfile
+Dockerfile can go in subdirectories
+
 docker pull - pulls images remotely if nothing stored locally
 docker build
 docker run -it --name [name]
 -it is -i and -t tag ?
 --rm removes itself after container is stopped
 
-
-docker info
-
 Containers
-docker ps - view active containers (or docker container ls)
-docker ps -a - view all containers (or docker container ls -a)
-docker ps -l - view last container created (note: small L not a 1) (or docker container -l)
+docker container ls or docker ps - list active containers
+docker container ls -a or docker ps -a - list all containers
+docker container -l or docker ps -l - list last container created (note: small L not a 1)
+docker container commit <container id>
 Run the container bash, using the following command.
-docker exec -it <container_name> bash
+docker run // creates a container
 docker start [container id or name]
 docker stop [container id or name]
 
 Running Containers
 docker inspect <container id or container name>
-exit - to exit a container
+docker container diff <container id> // 
+docker exec -it <container_name> bash // exec sends a command to a container
+exit (from shell) - to exit a container
 Ctrl-P Ctrl-Q - Detaching from the container without stopping
 
 Images
-docker images - view images
+docker image ls or docker images - list images
+docker image build -t myimagename:v0.1 . // using a Dockerfile in PWD // then docker container run myimagename:v0.1
 docker purge?ls
 docker run -d --name devtest -v myvol2:/app nginx:latest
 
 docker rm [id], docker rm -f [name]
 docker rmi [image name]
+
+Tags
+docker image tag <image id> <tagname>
 
 Mounts
 
@@ -55,6 +68,10 @@ Services
 docker service create --name <service-name> (does not support the -v or --volume tage, must use --mount)
 docker service ps <service-name>
 docker service rm <service-name>
+
+Linux
+apt-get update
+
 
 SQL Server for Linux
 https://hub.docker.com/r/microsoft/mssql-server-linux/
