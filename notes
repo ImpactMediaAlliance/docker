@@ -7,8 +7,7 @@ docker build
 docker run -it --name [name]
 -it is -i and -t tag ?
 --rm removes itself after container is stopped
-docker start [container id or name]
-docker stop [container id or name]
+
 
 docker info
 
@@ -16,19 +15,46 @@ Containers
 docker ps - view active containers (or docker container ls)
 docker ps -a - view all containers (or docker container ls -a)
 docker ps -l - view last container created (note: small L not a 1) (or docker container -l)
+Run the container bash, using the following command.
+docker exec -it <container_name> bash
+docker start [container id or name]
+docker stop [container id or name]
 
 Running Containers
+docker inspect <container id or container name>
 exit - to exit a container
 Ctrl-P Ctrl-Q - Detaching from the container without stopping
 
 Images
 docker images - view images
-docker purge?
-Run the container bash, using the following command.
-docker exec -it <container_name> bash
+docker purge?ls
+docker run -d --name devtest -v myvol2:/app nginx:latest
 
 docker rm [id], docker rm -f [name]
 docker rmi [image name]
+
+Mounts
+
+
+Volumes
+docker volume create <volume-name>
+docker volume ls
+docker volume inspect <volume-name>
+docker volume rm <volume-name>
+docker purge?
+-v or --volume
+-v uniquenamedvolume:container/path:optionalcomma-separatedlistofoptions (ro for read-only)
+--mount 
+(order not significant)
+(key value pairs)
+type=bind, volume or tmps
+src or source=<volume-name> (for anonymous left blank)
+dst, destination or target;path of file or directory mounted in the container
+
+Services 
+docker service create --name <service-name> (does not support the -v or --volume tage, must use --mount)
+docker service ps <service-name>
+docker service rm <service-name>
 
 SQL Server for Linux
 https://hub.docker.com/r/microsoft/mssql-server-linux/
@@ -55,8 +81,3 @@ SELECT Name from sys.Databases
 
 or?
 sqlcmd -U sa –S <YourIP>,<Port>
-
-Volumes
-docker volume ls
-docker volume create [name]
-docker volume rm [name]
