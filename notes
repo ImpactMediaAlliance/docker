@@ -2,6 +2,13 @@ Docker
 docker info
 docker version
 
+DockerHub
+docker login // from local repository
+docker image push <dockerhubid>/<imagename>:tag where local repo username matches dockerhub username
+// ex: docker image push impactmedia/linux_tweet_app:1.0 refers to repository [docker.io/impactmedia/linux_tweet_app'
+// then push another version to same DockerHub repo with 
+// docker image push impactmedia/linux_tweeter_app:2.0
+
 Compose
 // used to control multiple containers on a single system
 docker-compose.yml in the root of your project directory
@@ -49,6 +56,7 @@ docker image build -t myimagename:v0.1 .
 // then docker container run myimagename:v0.1
 docker image inspect alpine // <image id> for your own image
 docker image inspect --format "{{ json .RootFS.Layers }}" alpine // list of images
+docker tag <oldimagename:tag> <newimagename:tag> // rename an image then remove oldname with docker rmi <oldimagename:tag> after renaming
 
 docker purge?ls
 docker run -d --name devtest -v myvol2:/app nginx:latest
@@ -59,6 +67,14 @@ docker rmi [image name]
 
 Tags
 docker image tag <image id> <tagname>
+
+Nodes
+docker node ls // list nodes
+
+Stacks
+docker stack ls
+docker stack deploy --compose-file=docker-stack-.yml voting_stack
+docker stack services voting_stack
 
 Mounts
 
