@@ -9,12 +9,12 @@ docker image push <dockerhubid>/<imagename>:tag where local repo username matche
 // then push another version to same DockerHub repo with 
 // docker image push impactmedia/linux_tweeter_app:2.0
 
-Compose
+Docker Compose
 // used to control multiple containers on a single system
 docker-compose.yml in the root of your project directory
-docker compose up
-docker compose down
-docker compose build
+docker-compose build
+docker-compose up, docker-compose -d
+docker-compose down
 
 Swarm Mode 
 // tells Docker that you will be running many Docker engines and you want to coordinate operations across all of them. 
@@ -26,7 +26,6 @@ Dockerfile
 // A text file that contains all the commands, in order, needed to build a given image
 Dockerfile can go in subdirectories
 
-docker pull - pulls images remotely if nothing stored locally
 docker build
 docker run -it --name [name]
 -it is -i and -t tag ?
@@ -47,23 +46,26 @@ docker inspect <container id or container name>
 docker container diff <container id> // 
 docker exec -it <container_name> bash // exec sends a command to a container
 exit (from shell) - to exit a container
+Ctr-C shut down containers
 Ctrl-P Ctrl-Q - Detaching from the container without stopping
 
 Images
-docker image ls or docker images - list images
+List - docker image ls or docker images - list images
 docker image build -t myimagename:v0.1 . 
 // builds an image named myimagename with the tag v0.1 using a Dockerfile in PWD 
 // then docker container run myimagename:v0.1
 docker image inspect alpine // <image id> for your own image
 docker image inspect --format "{{ json .RootFS.Layers }}" alpine // list of images
-docker tag <oldimagename:tag> <newimagename:tag> // rename an image then remove oldname with docker rmi <oldimagename:tag> after renaming
+Rename - docker tag <oldimagename:tag> <newimagename:tag> // rename an image then remove oldname with docker rmi <oldimagename:tag> after renaming
+docker pull - pulls images remotely if not stored locally
 
-docker purge?ls
 docker run -d --name devtest -v myvol2:/app nginx:latest
 docker image history <image id>
 
-docker rm [id], docker rm -f [name]
+Remove -
+docker rmi? [id], docker rmi? -f [name]
 docker rmi [image name]
+docker purge? ls
 
 Tags
 docker image tag <image id> <tagname>
@@ -108,7 +110,6 @@ Layers
 Linux
 apt-get update
 echo "console.log(\"added text\");" >> myfile.ext // addes test to an existing file with extension of .ext
-
 
 SQL Server for Linux
 https://hub.docker.com/r/microsoft/mssql-server-linux/
